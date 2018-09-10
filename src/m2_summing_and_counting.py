@@ -7,9 +7,10 @@ A subsequent module lets you practice the ACCUMULATOR pattern in another classic
    IN GRAPHICS:   x = x + pixels
 
 Authors: David Mutchler, Dave Fisher, Valerie Galluzzi, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues and Jasmine Scott.
+"""  # COMPLETED: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
+import math
 
 # ----------------------------------------------------------------------
 # Students: As you work each of these problems, ask yourself:
@@ -62,6 +63,18 @@ def run_test_sum_more_cosines():
     print('Test 1 expected:', expected, '(approximately)')
     print('       actual:  ', answer)
 
+    # Test 2:
+    expected = 0.124155
+    answer = sum_more_cosines(1, 2)
+    print('Test 2 expected:', expected, '(approximately)')
+    print('       actual:  ', answer)
+
+    # Test 3:
+    expected = -1.359973
+    answer = sum_more_cosines(3, 5)
+    print('Test 3 expected:', expected, '(approximately)')
+    print('       actual:  ', answer)
+
     # ------------------------------------------------------------------
     # TO DO: 2 (continued).
     # Below this comment, add 2 more test cases of your own choosing.
@@ -82,7 +95,13 @@ def sum_more_cosines(m, n):
             cos(-4) + cos(-3) + cos(-2) + cos(-1) + cos(0) + cos(1)
          which is approximately 0.02082.
     """
-    # ------------------------------------------------------------------
+    total = 0
+    x = n - m
+    for k in range(x + 1):
+        total = total + math.cos((k * 1) + m)
+    return total
+
+# ------------------------------------------------------------------
     # TODO: 3. Implement and test this function.
     #   Note that you should write its TEST function first (above).
     #   That is called TEST-DRIVEN DEVELOPMENT (TDD).
@@ -93,7 +112,7 @@ def sum_more_cosines(m, n):
     #   That is, no fair using   range(m, n)   or anything like that.
     #   Just   range(blah)   where blah is a single variable.
     #   Reason: To ensure that you get more practice using variables.
-    # ------------------------------------------------------------------
+# ------------------------------------------------------------------
 
 
 def run_test_count_sines_from():
