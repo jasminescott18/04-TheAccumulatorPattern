@@ -283,6 +283,7 @@ def run_test_count_cosines_from():
     print('Test 6 expected:', expected)
     print('       actual:  ', answer)
 
+
 def count_cosines_from(m, n, x):
     """
     What comes in:  The three arguments are non-negative integers
@@ -323,7 +324,7 @@ def count_cosines_from(m, n, x):
 def run_test_sum_unit_fractions_from():
     """ Tests the   sum_unit_fractions_from   function. """
     # ------------------------------------------------------------------
-    # TODO: 8. Implement this TEST function.
+    # COMPLETED: 8. Implement this TEST function.
     #   It TESTS the  sum_unit_fractions_from  function defined below.
     #   Include at least **   3   ** tests (we wrote one for you).
     # Use the same 4-step process as for previous TEST functions.
@@ -344,6 +345,18 @@ def run_test_sum_unit_fractions_from():
     # Below this comment, add 2 more test cases of your own choosing.
     # ------------------------------------------------------------------
 
+    # Test 2
+    expected = 1.095634  # This is APPROXIMATELY the correct answer.
+    answer = sum_unit_fractions_from(4, 10)
+    print('Test 2 expected:', expected, '(approximately)')
+    print('       actual:  ', answer)
+
+    # Test 3
+    expected = 0.2818123  # This is APPROXIMATELY the correct answer.
+    answer = sum_unit_fractions_from(22, 28)
+    print('Test 3 expected:', expected, '(approximately)')
+    print('       actual:  ', answer)
+
 
 def sum_unit_fractions_from(m, n):
     """
@@ -357,8 +370,15 @@ def sum_unit_fractions_from(m, n):
          which is about 0.545635
       -- sum_unit_fractions_from(10, 9000)  returns about  6.853
     """
+
+    total = 0
+    x = n - m
+    for k in range(x + 1):
+        total = total + (1 / (m + (k * 1)))
+    return total
+
     # ------------------------------------------------------------------
-    # TODO: 9. Implement and test this function.
+    # COMPLETED: 9. Implement and test this function.
     #   Note that you should write its TEST function first (above).
     #
     # IMPORTANT: As in previous problems in this session,
