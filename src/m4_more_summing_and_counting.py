@@ -169,6 +169,24 @@ def run_test_factorial():
     #   ** uses  math.factorial  as an ORACLE for testing. **
     # ------------------------------------------------------------------
 
+    # Test 2:
+    answer_from_oracle = math.factorial(11)
+    answer_from_my_code = factorial(11)
+    print('Test 2 expected (from oracle):', answer_from_oracle)
+    print('       actual (from my code): ', answer_from_my_code)
+
+    # Test 2:
+    answer_from_oracle = math.factorial(30)
+    answer_from_my_code = factorial(30)
+    print('Test 2 expected (from oracle):', answer_from_oracle)
+    print('       actual (from my code): ', answer_from_my_code)
+
+    # Test 2:
+    expected = 120
+    answer = factorial(5)
+    print('Test 1 expected', expected)
+    print('       actual: ', answer)
+
 
 def factorial(n):
     """
@@ -187,6 +205,10 @@ def factorial(n):
     #   use an explicit    for ... in range(...):     statement.
     # ------------------------------------------------------------------
 
+    total = 1
+    for k in range(n):
+        total = total * (n - (k * 1))
+    return total
 
 def run_test_count_cosines_from():
     """ Tests the   count_cosines_from   function. """
