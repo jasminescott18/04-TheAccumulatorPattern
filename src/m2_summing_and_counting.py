@@ -22,6 +22,8 @@ import math
 #        -- IN the loop?
 #        -- AFTER the loop?
 # ----------------------------------------------------------------------
+
+
 def main():
     """ Calls the   TEST   functions in this module. """
     run_test_sum_more_cosines()
@@ -63,6 +65,11 @@ def run_test_sum_more_cosines():
     print('Test 1 expected:', expected, '(approximately)')
     print('       actual:  ', answer)
 
+    # ------------------------------------------------------------------
+    # TO DO: 2 (continued).
+    # Below this comment, add 2 more test cases of your own choosing.
+    # ------------------------------------------------------------------
+
     # Test 2:
     expected = 0.124155
     answer = sum_more_cosines(1, 2)
@@ -74,11 +81,6 @@ def run_test_sum_more_cosines():
     answer = sum_more_cosines(3, 5)
     print('Test 3 expected:', expected, '(approximately)')
     print('       actual:  ', answer)
-
-    # ------------------------------------------------------------------
-    # TO DO: 2 (continued).
-    # Below this comment, add 2 more test cases of your own choosing.
-    # ------------------------------------------------------------------
 
 
 def sum_more_cosines(m, n):
@@ -143,7 +145,7 @@ def run_test_count_sines_from():
 
     # Test 2:
     expected = 2
-    answer = count_sines_from(2 , 4)
+    answer = count_sines_from(2, 4)
     print('Test 2 expected:', expected)
     print('       actual:  ', answer)
 
@@ -196,10 +198,10 @@ def count_sines_from(m, n):
     for k in range(x + 1):
         if math.sin(m + (k * 1)) < 0.5:
             count = count + 1
-
     return count
+
     # ------------------------------------------------------------------
-    # TODO: 5. Implement and test this function.
+    # COMPLETED: 5. Implement and test this function.
     #   Note that you should write its TEST function first (above).
     #
     # IMPORTANT: As in previous problems in this session,
@@ -211,7 +213,7 @@ def count_sines_from(m, n):
 def run_test_count_sines_vs_cosines():
     """ Tests the   count_sines_vs_cosines   function. """
     # ------------------------------------------------------------------
-    # TODO: 6. Implement this TEST function.
+    # COMPLETED: 6. Implement this TEST function.
     #   It TESTS the  count_sines_vs_cosines  function defined below.
     #   Include at least **   6   ** tests (we wrote one for you).
     #              ** Yes, 6 (six) tests. **
@@ -233,6 +235,36 @@ def run_test_count_sines_vs_cosines():
     # TO DO: 6 (continued).
     # Below this comment, add 5 more test cases of your own choosing.
     # ------------------------------------------------------------------
+
+    # Test 2:
+    expected = 4
+    answer = count_sines_vs_cosines(3)
+    print('Test 2 expected:', expected)
+    print('       actual:  ', answer)
+
+    # Test 3:
+    expected = 6
+    answer = count_sines_vs_cosines(7)
+    print('Test 3 expected:', expected)
+    print('       actual:  ', answer)
+
+    # Test 4:
+    expected = 12
+    answer = count_sines_vs_cosines(12)
+    print('Test 4 expected:', expected)
+    print('       actual:  ', answer)
+
+    # Test 5:
+    expected = 9
+    answer = count_sines_vs_cosines(9)
+    print('Test 5 expected:', expected)
+    print('       actual:  ', answer)
+
+    # Test 6:
+    expected = 18
+    answer = count_sines_vs_cosines(17)
+    print('Test 6 expected:', expected)
+    print('       actual:  ', answer)
 
 
 def count_sines_vs_cosines(m):
@@ -259,8 +291,14 @@ def count_sines_vs_cosines(m):
       -- count_sines_vs_cosines(1) returns 1
       -- Also:  count_sines_vs_cosines(101) returns 100 (trust me!)
     """
+    count = 0
+    x = m * 2
+    for k in range(x+1):
+        if math.sin(-m + k) > math.cos(-m + k):
+            count = count + 1
+    return count
     # ------------------------------------------------------------------
-    # TODO: 7. Implement and test this function.
+    # COMPLETED: 7. Implement and test this function.
     #   Note that you should write its TEST function first (above).
     #
     # IMPORTANT: As in previous problems in this session,
