@@ -47,8 +47,8 @@ def run_test_draw_parallel_lines():
     window1 = rg.RoseWindow(600, 350, title)
 
     # Test 1:
-    left_most_point = rg.Point(400, 50)
-    draw_parallel_lines(7, left_most_point, 100, window1)
+    m = rg.Point(400, 50)
+    draw_parallel_lines(7, m, 100, window1)
 
     # Test 2:
     left_most_point = rg.Point(50, 200)
@@ -97,15 +97,19 @@ def draw_parallel_lines(n, point, length, window):
     """
 
     z = length
-
     x = point.x
     y = point.y
+    point = rg.Point(x, y)
+    m = point
+    point1 = rg.Point((x + z), y)
 
-    for k in range(n):
+    for _ in range(n):
+        line = rg.Line(m, point1)
+        y = y + 30
+        m = rg.Point(x, y)
+        point1 = rg.Point((x + z), y)
 
-        rg.Point = ((x + (k * 30)), (y + (k * 30)))
-        rg.Line = z
-
+        line.attach_to(window)
     window.render()
 
     # ------------------------------------------------------------------
