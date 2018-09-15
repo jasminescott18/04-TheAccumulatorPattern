@@ -98,11 +98,10 @@ def draw_squares_from_circle(n, circle, window):
       :type window: rg.RoseWindow
     """
 
-    x = circle.center.x + circle.radius
-    y = circle.center.y + circle.radius
-    center = rg.Point(x, y)
-
     for k in range(n):
+        x = circle.center.x + (circle.radius * k)
+        y = circle.center.y + (circle.radius * k)
+        center = rg.Point(x, y)
         square = rg.Square(center, (circle.radius * 2))
         circle.attach_to(window)
         square.attach_to(window)
