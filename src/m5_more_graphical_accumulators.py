@@ -219,13 +219,13 @@ def draw_circles_from_rectangle(m, n, rectangle, window):
     y2 = rectangle.corner_2.y
     rectangle.attach_to(window)
     for k in range(m):
-        radius = (math.sqrt((y2 - y1) ** 2)) / 2
-        center = rg.Point((x1 + (radius * (k * 2))) - radius, y1 + radius)
+        radius = (y2 - y1) / 2
+        center = rg.Point((x1 - (radius * (k * 2))) - radius, y1 + radius)
         circle = rg.Circle(center, radius)
         circle.fill_color = rectangle.fill_color
         circle.attach_to(window)
     for k in range(n):
-        radius = (math.sqrt((x2 - x1) ** 2)) / 2
+        radius = (x2 - x1) / 2
         center = rg.Point(x1 + radius, (y1 - (radius * (k * 2) + radius)))
         circle = rg.Circle(center, radius)
         circle.outline_color = rectangle.outline_color
@@ -324,6 +324,33 @@ def draw_lines_from_rectangles(rectangle1, rectangle2, n, window):
       :type n: int
       :type window: rg.RoseWindow
       """
+    rectangle1.attach_to(window)
+    rectangle2.attach_to(window)
+    # Rectangle 1
+    x1 = rectangle1.corner_1.x
+    y1 = rectangle1.corner_1.y
+    x2 = rectangle1.corner_2.x
+    y2 = rectangle1.corner_2.y
+    # Rectangle 2
+    x3 = rectangle2.corner_1.x
+    y3 = rectangle2.corner_1.y
+    x4 = rectangle2.corner_2.x
+    y4 = rectangle2.corner_2.y
+
+    distance = ((y2 + y1) / 2)
+    length = ((x2 + x1) / 2)
+    distance2 = (y4 + y3) / 2
+    length2 = (x4 + x3) / 2
+    center1 = rg.Point(length, distance)
+    center2 = rg.Point(length2, distance2)
+    line1 = rg.Line(center1, center2)
+    line1.attach_to(window)
+    line1.thickness = 5
+    line2.thickness = 5
+    line.1
+    # for k in range(n):
+    # line2 = rg.Point((y2 - y1 / 2) + distance, (x2 - x1 / 2) - length)
+    window.render()
     # ------------------------------------------------------------------
     # TODO: 5. Implement and test this function.
     #          Tests have been written for you (above).
