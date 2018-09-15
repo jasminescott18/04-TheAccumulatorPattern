@@ -139,11 +139,28 @@ def run_test_draw_circles_from_rectangle():
     rectangle.fill_color = 'green'
     rectangle.outline_color = 'black'
     rectangle.outline_thickness = 5
-    draw_circles_from_rectangle (4, 5, rectangle, window)
+    draw_circles_from_rectangle(4, 5, rectangle, window)
+
+    # Test 2:
+    rectangle = rg.Rectangle(rg.Point(500, 450), rg.Point(600, 400))
+    rectangle.fill_color = 'blue'
+    rectangle.outline_color = 'red'
+    rectangle.outline_thickness = 3
+    draw_circles_from_rectangle(8, 3, rectangle, window)
     window.close_on_mouse_click()
 
+    window1 = rg.RoseWindow(620, 380)
+
+    # Test 3:
+    rectangle = rg.Rectangle(rg.Point(375, 330), rg.Point(350, 280))
+    rectangle.fill_color = 'yellow'
+    rectangle.outline_color = 'brown'
+    rectangle.outline_thickness = 5
+    draw_circles_from_rectangle(4, 5, rectangle, window1)
+    window1.close_on_mouse_click()
+
     # ------------------------------------------------------------------
-    # TODO: 3. Implement this TEST function.
+    # COMPLETED: 3. Implement this TEST function.
     #   It TESTS the  draw_circles_from_rectangle  function
     #   defined below.  Include at least **   3   ** tests, of which
     #      ***  at least TWO tests are on ONE window and
@@ -202,17 +219,19 @@ def draw_circles_from_rectangle(m, n, rectangle, window):
     y2 = rectangle.corner_2.y
     rectangle.attach_to(window)
     for k in range(m):
-        radius = (y2 - y1) / 2
+        radius = abs(y2 - y1) / 2
         center = rg.Point((x1 - (radius * (k * 2))) - radius, y1 + radius)
         circle = rg.Circle(center, radius)
         circle.fill_color = rectangle.fill_color
         circle.attach_to(window)
     for k in range(n):
-        radius = (x2 - x1) / 2
+        radius = abs(x2 - x1) / 2
         center = rg.Point(x1 + radius, (y1 - (radius * (k * 2) + radius)))
         circle = rg.Circle(center, radius)
+        circle.outline_color = rectangle.outline_color
         circle.attach_to(window)
     window.render()
+
     # ------------------------------------------------------------------
     # TODO: 4. Implement and test this function.
     #          Tests have been written for you (above).
