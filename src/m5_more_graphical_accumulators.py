@@ -341,15 +341,19 @@ def draw_lines_from_rectangles(rectangle1, rectangle2, n, window):
     length = ((x2 + x1) / 2)
     distance2 = (y4 + y3) / 2
     length2 = (x4 + x3) / 2
+
     center1 = rg.Point(length, distance)
     center2 = rg.Point(length2, distance2)
     line1 = rg.Line(center1, center2)
     line1.attach_to(window)
     line1.thickness = 5
-    line2.thickness = 5
-    line.1
-    # for k in range(n):
-    # line2 = rg.Point((y2 - y1 / 2) + distance, (x2 - x1 / 2) - length)
+
+    for k in range(n):
+        line1.attach_to(window)
+        line1.color = rectangle1.outline_color
+        line1.thickness = 5
+
+
     window.render()
     # ------------------------------------------------------------------
     # TODO: 5. Implement and test this function.
