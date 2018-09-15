@@ -13,7 +13,7 @@ Authors: David Mutchler, Dave Fisher, Valerie Galluzzi, Amanda Stouder,
 """  # COMPLETED: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
-
+import math
 
 # ----------------------------------------------------------------------
 # Students: As you work each of these problems, ask yourself:
@@ -219,13 +219,13 @@ def draw_circles_from_rectangle(m, n, rectangle, window):
     y2 = rectangle.corner_2.y
     rectangle.attach_to(window)
     for k in range(m):
-        radius = abs(y2 - y1) / 2
-        center = rg.Point((x1 - (radius * (k * 2))) - radius, y1 + radius)
+        radius = (math.sqrt((y2 - y1) ** 2)) / 2
+        center = rg.Point((x1 + (radius * (k * 2))) - radius, y1 + radius)
         circle = rg.Circle(center, radius)
         circle.fill_color = rectangle.fill_color
         circle.attach_to(window)
     for k in range(n):
-        radius = abs(x2 - x1) / 2
+        radius = (math.sqrt((x2 - x1) ** 2)) / 2
         center = rg.Point(x1 + radius, (y1 - (radius * (k * 2) + radius)))
         circle = rg.Circle(center, radius)
         circle.outline_color = rectangle.outline_color
