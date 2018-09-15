@@ -139,7 +139,7 @@ def run_test_draw_circles_from_rectangle():
     rectangle.fill_color = 'green'
     rectangle.outline_color = 'black'
     rectangle.outline_thickness = 5
-    draw_squares_from_circle(4, 5, rectangle, window)
+    draw_circles_from_rectangle (4, 5, rectangle, window)
     window.close_on_mouse_click()
 
     # ------------------------------------------------------------------
@@ -196,10 +196,23 @@ def draw_circles_from_rectangle(m, n, rectangle, window):
       :type rectangle: rg.Rectangle
       :type window: rg.RoseWindow
     """
-
-
-
-
+    x1 = rectangle.corner_1.x
+    x2 = rectangle.corner_2.x
+    y1 = rectangle.corner_1.y
+    y2 = rectangle.corner_2.y
+    rectangle.attach_to(window)
+    for k in range(m):
+        radius = (y2 - y1) / 2
+        center = rg.Point((x1 - (radius * (k * 2))) - radius, y1 + radius)
+        circle = rg.Circle(center, radius)
+        circle.fill_color = rectangle.fill_color
+        circle.attach_to(window)
+    for k in range(n):
+        radius = (x2 - x1) / 2
+        center = rg.Point(x1 + radius, (y1 - (radius * (k * 2) + radius)))
+        circle = rg.Circle(center, radius)
+        circle.attach_to(window)
+    window.render()
     # ------------------------------------------------------------------
     # TODO: 4. Implement and test this function.
     #          Tests have been written for you (above).
